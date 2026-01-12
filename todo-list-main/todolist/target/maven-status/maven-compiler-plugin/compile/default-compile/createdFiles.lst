@@ -1,0 +1,10 @@
+com\todo\todolist\controller\TaskController.class
+com\todo\todolist\model\Task.class
+com\todo\todolist\model\User.class
+com\todo\todolist\TodolistApplication.class
+com\todo\todolist\repository\TaskRepository.class
+com\todo\todolist\repository\UserRepository.class
+com\todo\todolist\controller\GoogleAuthController.class
+com\todo\todolist\config\SecurityConfig.class
+com\todo\todolist\controller\TaskController$TaskRequest.class
+com\todo\todolist\controller\AuthController.class

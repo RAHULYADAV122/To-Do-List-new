@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Control | Personnel Tasks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="auth-container" class="auth-card">
+        <div class="header"><i class="fas fa-shield-halved"></i> <h1>TASK COMMAND</h1></div>
+        <div class="inputs">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="auth('login')" class="btn-primary">LOGIN</button>
+            <button onclick="auth('signup')" class="btn-secondary">SIGN UP</button>
+            <div class="divider"><span>OR</span></div>
+            <a href="http://localhost:9090/oauth2/authorization/google" class="google-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" alt="G"> Sign in with Google
+            </a>
+        </div>
+    </div>
+
+    <div id="todo-container" class="dashboard" style="display:none;">
+        <header class="top-nav">
+            <div class="logo">MISSION CONTROL</div>
+            <div class="user-meta">Welcome, <span id="user-display"></span> <button onclick="logout()">LOGOUT</button></div>
+        </header>
+
+        <main class="main-body">
+            <div class="mission-input-box">
+                <input type="text" id="taskDesc" placeholder="New Objective...">
+                <select id="taskPriority">
+                    <option value="Urgent">URGENT</option>
+                    <option value="Normal" selected>NORMAL</option>
+                    <option value="Low">LOW</option>
+                </select>
+                <select id="taskStatus">
+                    <option value="Not started yet">NOT STARTED</option>
+                    <option value="In progress">IN PROGRESS</option>
+                    <option value="Done">DONE</option>
+                </select>
+                <input type="date" id="taskDeadline">
+                <button onclick="addTask()" class="deploy-btn">DEPLOY</button>
+            </div>
+
+            <div class="controls">
+                <div class="filter-side">
+                    Filter: 
+                    <select id="filterPriority" onchange="loadTasks()">
+                        <option value="">All Priorities</option>
+                        <option value="Urgent">Urgent</option>
+                        <option value="Normal">Normal</option>
+                    </select>
+                    <select id="filterStatus" onchange="loadTasks()">
+                        <option value="">All Status</option>
+                        <option value="Done">Completed</option>
+                        <option value="In progress">In Progress</option>
+                    </select>
+                </div>
+                <div class="sort-side">
+                    Sort: <button onclick="loadTasks('deadline')">Deadline</button>
+                    <button onclick="loadTasks('priority')">Priority</button>
+                </div>
+            </div>
+
+            <div id="taskList" class="task-grid"></div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
